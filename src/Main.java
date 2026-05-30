@@ -9,6 +9,8 @@ public class Main {
         int cont=0, posicoes_corretas, posicoes_diferentes;
         boolean passa= false, venceu=false;
         do{
+            verVetor(senha_computador);
+            System.out.println();
             System.out.print((cont+1)+"° tentativa| Sequencia: ");
             senha_string = sc.nextLine();
             senha_usuario= senhaUsuario(senha_computador.length, senha_string);
@@ -18,7 +20,7 @@ public class Main {
             System.out.println("Digitos corretos: "+posicoes_corretas);
             System.out.println("Digitos deslocados: "+posicoes_diferentes);
             cont++;
-            if ((cont==10)){
+            if ((cont==10) && (posicoes_corretas!=senha_computador.length)){
                 passa= true;
             } else if (posicoes_corretas==senha_computador.length) {
                 passa= true;
@@ -28,7 +30,7 @@ public class Main {
         if (venceu){
             System.out.println("Parabens!\nVoce venceu o jogo.");
         }else {
-            System.out.println("Perdeu pra mim otario KKKKKKK\n a sequencia era: ");
+            System.out.print("Perdeu pra mim otario KKKKKKK\nA sequencia era: ");
             verVetor(senha_computador);
         }
 
@@ -60,11 +62,6 @@ public class Main {
         }
         return cont;
         }
-    static void verVetor(int[] v){
-        for (int i = 0; i < v.length; i++) {
-            System.out.print(v[i]+" ");
-        }
-    }
 //  2- Verificar quantidade de Digitos corretos em posições erradas
     static int posicoesDiferentes(int[] senha_computador, int[] senha_usuario){
         int cont=0;
@@ -73,13 +70,26 @@ public class Main {
             cop_computador[k]= senha_computador[k];
         }
         for (int i = 0; i < senha_usuario.length; i++) {
-            for (int j = 0; j < cop_computador.length; j++) {
-                if ((i!=j)&&(senha_usuario[i]==cop_computador[j])){
-                    cop_computador[j]= -1;
-                    cont++;
+            if (senha_usuario[i] == cop_computador[i]) {
+                cop_computador[i] = 0;
+                senha_usuario[i] = 0;
+            }else {
+                for (int j = 0; j < cop_computador.length; j++) {
+                    if (cop_computador[j] != 0) {
+                        if (senha_usuario[i] == cop_computador[j]) {
+                            cop_computador[j] = 0;
+                            senha_usuario[i] = 0;
+                            cont++;
+                        }
+                    }
                 }
             }
         }
         return cont;
+    }
+    static void verVetor(int[] v){
+        for (int i = 0; i < v.length; i++) {
+            System.out.print(v[i]+" ");
+        }
     }
 }
