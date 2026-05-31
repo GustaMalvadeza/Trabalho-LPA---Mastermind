@@ -9,6 +9,7 @@ public class Main {
         String senha_usuario_string;
         int tentativas =0, posicoes_corretas, posicoes_diferentes;
         boolean passa= false, venceu=false, controlador_digito;
+        System.out.println("Bem vindo ao jogo Mastermind!\nCaso tenha alguma duvida de funcionamento, leia o 'README' do repositorio.");
         do{
             System.out.println();
             do {
