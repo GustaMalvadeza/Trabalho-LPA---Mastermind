@@ -2,7 +2,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-//    Onde a execução do jogo acontece
     public static void main(String[] args) {
         Scanner sc= new Scanner(System.in);
         int[] senha_computador= senhaAleatoria(4), senha_usuario;
@@ -37,13 +36,14 @@ public class Main {
             }
         }while (!passa);
         if (venceu){
+            System.out.println();
             System.out.println("Parabens!\nVoce venceu o jogo.");
         }else {
-            System.out.print("Que pena!\nVoce acabou perdendo, sequencia era: ");
+            System.out.println();
+            System.out.print("Que pena!\nVoce acabou perdendo, a sequencia era: ");
             verVetor(senha_computador);
         }
     }
-//    Gera uma senha aleatoria
     static int[] senhaAleatoria (int n){
         Random rand= new Random();
         int[] senha= new int[n];
@@ -51,7 +51,6 @@ public class Main {
             senha[i]= rand.nextInt(1,7);
         }return senha;
     }
-//    Verifica se a sequencia digitada pelo usuario é valida ou não
     static boolean verificadorSequencia(int tamanho, String sequencia){
         int digito;
         sequencia= sequencia.replace(" ", "");
@@ -66,7 +65,6 @@ public class Main {
         }
         return true;
     }
-//    Formata a senha do usuario para um vetor
     static int[] senhaUsuario(int tamanho, String sequencia){
         int[] senha= new int[tamanho];
         sequencia= sequencia.replace(" ", "");
@@ -74,7 +72,6 @@ public class Main {
             senha[i]= sequencia.charAt(i)-'0';
         }return senha;
     }
-//    Verifica e devolver o numero de digitos na posicao corretas
     static int posicoesCorretas(int[] senha_computador, int[] senha_usuario){
         int cont=0;
         for (int i = 0; i < senha_usuario.length; i++) {
@@ -84,7 +81,6 @@ public class Main {
         }
         return cont;
         }
-//    Verifica e devolver o numero de digitos na posicao errada mas que pertencem
     static int posicoesDiferentes(int[] senha_computador, int[] senha_usuario){
         int cont=0;
         int[] cop_senha_computador = new int[senha_computador.length];
@@ -112,7 +108,6 @@ public class Main {
         }
         return cont;
     }
-//    Printa um vetor qualquer dado a ela por parametro
     static void verVetor(int[] v){
         for (int j : v) {
             System.out.print(j + " ");
