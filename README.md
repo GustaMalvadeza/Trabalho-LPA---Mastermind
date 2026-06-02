@@ -1,4 +1,4 @@
-### Jogo da Senha (Mastermind) — Java
+# Jogo da Senha (Mastermind) — Java
 #### Esse projeto é a implementação do jogo Mastermind em Java, feito como trabalho prático da minha disciplina de Lógica de Programação e Algoritmos na *UCSal (Universidade Católica do Salvador)*.
 
 ***Como funciona:***
